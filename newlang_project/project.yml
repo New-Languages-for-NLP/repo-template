@@ -74,16 +74,16 @@ commands:
   - name: debug
     help: "Assess data for training using spaCy's debug data"
     script:
-      - "python -m spacy debug data config/${vars.config}"
+      - "python -m spacy debug data configs/${vars.config}"
       
   - name: train
     help: "Train ${vars.treebank}"
     script:
-      - "python -m spacy train config/${vars.config} --output training/${vars.treebank} --gpu-id ${vars.gpu} --nlp.lang=${vars.lang}"
+      - "python -m spacy train configs/${vars.config} --output training/${vars.treebank} --gpu-id ${vars.gpu} --nlp.lang=${vars.lang}"
     deps:
       - "corpus/converted/train.spacy"
       - "corpus/converted/dev.spacy"
-      - "config/${vars.config}"
+      - "configs/${vars.config}"
     outputs:
       - "training/${vars.treebank}/model-best"
 
