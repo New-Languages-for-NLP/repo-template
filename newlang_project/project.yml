@@ -31,6 +31,7 @@ assets:
 workflows:
   all:
     - install
+    - check-conll
     - convert
     - split
     - debug
@@ -52,7 +53,14 @@ commands:
       - "pip install -e lang/${vars.lang}"
     deps:
       - "assets/${vars.treebank}/2_new_language_object"
-      
+
+  - name: check-conll
+    help: "Look for errors in CoNLL-2002 files"
+    script:
+      - "python scripts/check_conll.py assets/${vars.treebank}/3_inception_export"
+    deps:
+      - assets/${vars.treebank}/3_inception_export
+
   - name: convert
     help: "Convert the data to spaCy's format"
     script: 
