@@ -17,7 +17,7 @@ def pretrain(raw_text_folder:str, lang:str):
     nlp = lang()
 
     #TODO handle only txt files? what of other formats
-    texts = [t.read_text() for t in Path(raw_text_folder).iterdir()] if t.suffix == ".txt"]
+    texts = [t.read_text() for t in Path(raw_text_folder).iterdir() if t.suffix == ".txt"]
     docbin = DocBin()
     [docbin.add(nlp(text)) for text in texts]
     docbin.to_disk(f'corpus/converted/raw_text.spacy')
