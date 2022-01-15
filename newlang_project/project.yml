@@ -31,6 +31,7 @@ assets:
 workflows:
   all:
     - install
+    - prep-rawtext
     - check-conll
     - convert
     - split
@@ -53,7 +54,16 @@ commands:
       - "pip install -e lang/${vars.lang}"
     deps:
       - "assets/${vars.treebank}/2_new_language_object"
-
+      
+  - name: prep-rawtext 
+    help: "Process raw texts in the 0_original_texts folder and convert them to raw_text.spacy"
+    script: 
+      - "python scripts/pretrain.py assets/${vars.treebank}/0_original_texts ${vars.lang}"
+    deps: 
+      - assets/${vars.treebank}/0_original_texts
+    outputs: 
+      - corpus/converted/raw_text.spacy
+      
   - name: check-conll
     help: "Look for errors in CoNLL-2002 files"
     script:
