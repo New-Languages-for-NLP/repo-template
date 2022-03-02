@@ -1,5 +1,5 @@
 # Using the `push` command, [spaCy-huggingface-hub](https://github.com/explosion/spacy-huggingface-hub) will generate a model card using your model's `meta.json` file.
-# Example
+# [Example](https://huggingface.co/spacy/en_core_web_sm)
 ---
 tags:
 - spacy
