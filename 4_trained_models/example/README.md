@@ -1,3 +1,5 @@
+# Based on https://huggingface.co/spacy/en_core_web_sm/blob/main/README.md
+
 ---
 tags:
 - spacy
